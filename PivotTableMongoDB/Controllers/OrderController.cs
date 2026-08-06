@@ -60,7 +60,7 @@ namespace PivotTableMongoDB.Controllers
                 || string.IsNullOrWhiteSpace(order.CustomerName)
                 || !order.EmployeeID.HasValue)
             {
-                return BadRequest(
+                return ValidationProblem(
                     "CustomerName and EmployeeID are required.");
             }
 
@@ -84,7 +84,7 @@ namespace PivotTableMongoDB.Controllers
                 || string.IsNullOrWhiteSpace(order.CustomerName)
                 || !order.EmployeeID.HasValue)
             {
-                return BadRequest(
+                return ValidationProblem(
                     "OrderID, CustomerName and EmployeeID are required.");
             }
 
@@ -112,7 +112,7 @@ namespace PivotTableMongoDB.Controllers
                 value.Key?.ToString(),
                 out int orderId))
             {
-                return BadRequest(
+                return ValidationProblem(
                     "A numeric order key is required.");
             }
 
