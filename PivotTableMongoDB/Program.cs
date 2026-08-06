@@ -23,16 +23,22 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
+    app.UseExceptionHandler();
     app.UseHsts();
+}
+else
+{
+    // The developer exception page shows stack traces during local development.
+    app.UseDeveloperExceptionPage();
 }
 
 app.UseExceptionHandler();
 
 app.UseHttpsRedirection();
 
-app.MapControllers();
-
 app.UseAntiforgery();
+
+app.MapControllers();
 
 app.MapStaticAssets();
 
